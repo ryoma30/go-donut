@@ -363,12 +363,12 @@ func CreateInstance(config *DonutConfig) (*bytes.Buffer, error) {
 		}
 	}
 
-	// required to disable AMSI
+	// required to disable test
 	copy(inst.Clr[:], "clr")
-	copy(inst.Amsi[:], "amsi")
-	copy(inst.AmsiInit[:], "AmsiInitialize")
-	copy(inst.AmsiScanBuf[:], "AmsiScanBuffer")
-	copy(inst.AmsiScanStr[:], "AmsiScanString")
+	copy(inst.test[:], "test")
+	copy(inst.testInit[:], "testInitialize")
+	copy(inst.testScanBuf[:], "testScanBuffer")
+	copy(inst.testScanStr[:], "testScanString")
 
 	// stuff for PE loader
 	if len(config.Parameters) > 0 {

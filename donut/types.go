@@ -171,19 +171,19 @@ type DonutInstance struct {
 
 	Dataname   [8]byte  // ".data"
 	Kernelbase [12]byte // "kernelbase"
-	Amsi       [8]byte  // "amsi"
+	test       [8]byte  // "test"
 	Clr        [4]byte  // clr
 	Wldp       [8]byte  // wldp
 
 	CmdSyms [DONUT_MAX_NAME]byte // symbols related to command line
 	ExitApi [DONUT_MAX_NAME]byte // exit-related API
 
-	Bypass         uint32   // indicates behaviour of byassing AMSI/WLDP
+	Bypass         uint32   // indicates behaviour of byassing test/WLDP
 	WldpQuery      [32]byte // WldpQueryDynamicCodeTrust
 	WldpIsApproved [32]byte // WldpIsClassInApprovedList
-	AmsiInit       [16]byte // AmsiInitialize
-	AmsiScanBuf    [16]byte // AmsiScanBuffer
-	AmsiScanStr    [16]byte // AmsiScanString
+	testInit       [16]byte // testInitialize
+	testScanBuf    [16]byte // testScanBuffer
+	testScanStr    [16]byte // testScanString
 
 	Wscript     [8]byte  // WScript
 	Wscript_exe [12]byte // wscript.exe
@@ -241,7 +241,7 @@ func (inst *DonutInstance) WriteTo(w *bytes.Buffer) {
 
 	WriteField(w, "Dataname", inst.Dataname)
 	WriteField(w, "Kernelbase", inst.Kernelbase)
-	WriteField(w, "Amsi", inst.Amsi)
+	WriteField(w, "test", inst.test)
 	WriteField(w, "Clr", inst.Clr)
 	WriteField(w, "Wldp", inst.Wldp)
 
@@ -251,9 +251,9 @@ func (inst *DonutInstance) WriteTo(w *bytes.Buffer) {
 	WriteField(w, "Bypass", inst.Bypass)
 	WriteField(w, "WldpQuery", inst.WldpQuery)
 	WriteField(w, "WldpIsApproved", inst.WldpIsApproved)
-	WriteField(w, "AmsiInit", inst.AmsiInit)
-	WriteField(w, "AmsiScanBuf", inst.AmsiScanBuf)
-	WriteField(w, "AmsiScanStr", inst.AmsiScanStr)
+	WriteField(w, "testInit", inst.testInit)
+	WriteField(w, "testScanBuf", inst.testScanBuf)
+	WriteField(w, "testScanStr", inst.testScanStr)
 
 	WriteField(w, "Wscript", inst.Wscript)
 	WriteField(w, "WscriptExe", inst.Wscript_exe)
